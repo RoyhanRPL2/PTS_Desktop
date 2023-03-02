@@ -84,7 +84,7 @@ namespace PTS_Desktop
         {
             con.Open();
 
-            cmd.CommandText = "INSERT INTO [tb_member] (member_id, member_username, member_email, member_password, member_address, member_phone) values('" + member_id + "','" + txtUsername.Text + "','" + txtEmail.Text + "','" + txtPassword.Text + "', '"+ txtAlamat.Text +"', '"+ txtTelepon.Text +"')";
+            cmd.CommandText = "INSERT INTO [tb_member] (member_id, member_username, member_email, member_password, member_address, member_phoneNumber) values('" + member_id + "','" + txtUsername.Text + "','" + txtEmail.Text + "','" + txtPassword.Text + "', '"+ txtAlamat.Text +"', '"+ txtTelepon.Text +"')";
             cmd.ExecuteNonQuery();
             con.Close();
             generateid();
