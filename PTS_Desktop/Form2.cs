@@ -64,7 +64,18 @@ namespace PTS_Desktop
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            string message = "Are you sure you want to leave?";
+            string title = "Close Window";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result = MessageBox.Show(message, title, buttons);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                //Do something
+            }
         }
     }
 }

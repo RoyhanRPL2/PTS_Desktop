@@ -105,5 +105,15 @@ namespace PTS_Desktop
             txtKode.Text = "";
             MessageBox.Show("Data Delete Sukses");
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
