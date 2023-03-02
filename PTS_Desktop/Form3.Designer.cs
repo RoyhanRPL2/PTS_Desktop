@@ -99,7 +99,7 @@ namespace PTS_Desktop
             // 
             this.button5.BackColor = System.Drawing.Color.Azure;
             this.button5.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(760, 257);
+            this.button5.Location = new System.Drawing.Point(759, 261);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(114, 42);
             this.button5.TabIndex = 7;
