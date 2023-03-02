@@ -112,6 +112,7 @@ namespace PTS_Desktop
             this.btnDaftar.Text = "Sign In";
             this.btnDaftar.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnDaftar.Click += new System.EventHandler(this.btnDaftar_Click);
+            this.btnDaftar.TextChanged += new System.EventHandler(this.btnDaftar_TextChanged);
             // 
             // txtPassword
             // 

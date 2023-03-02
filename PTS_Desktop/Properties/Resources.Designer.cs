@@ -63,6 +63,26 @@ namespace PTS_Desktop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addImage {
+            get {
+                object obj = ResourceManager.GetObject("addImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap addImage1 {
+            get {
+                object obj = ResourceManager.GetObject("addImage1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap annie_spratt_GWCvnsMtiBg_unsplash {
             get {
                 object obj = ResourceManager.GetObject("annie-spratt-GWCvnsMtiBg-unsplash", resourceCulture);
@@ -96,6 +116,26 @@ namespace PTS_Desktop.Properties {
         internal static System.Drawing.Bitmap cd29289370a919af8bcc24b7a47051a0 {
             get {
                 object obj = ResourceManager.GetObject("cd29289370a919af8bcc24b7a47051a0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logout {
+            get {
+                object obj = ResourceManager.GetObject("logout", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

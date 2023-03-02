@@ -35,7 +35,9 @@ namespace PTS_Desktop
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.IconLogout = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IconLogout)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -100,12 +102,24 @@ namespace PTS_Desktop
             this.button5.Text = "Display";
             this.button5.UseVisualStyleBackColor = false;
             // 
+            // IconLogout
+            // 
+            this.IconLogout.Image = global::PTS_Desktop.Properties.Resources.logout;
+            this.IconLogout.Location = new System.Drawing.Point(1182, 62);
+            this.IconLogout.Name = "IconLogout";
+            this.IconLogout.Size = new System.Drawing.Size(57, 38);
+            this.IconLogout.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.IconLogout.TabIndex = 8;
+            this.IconLogout.TabStop = false;
+            this.IconLogout.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(1280, 720);
+            this.Controls.Add(this.IconLogout);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox1);
@@ -118,6 +132,7 @@ namespace PTS_Desktop
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IconLogout)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +146,6 @@ namespace PTS_Desktop
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.PictureBox IconLogout;
     }
 }
