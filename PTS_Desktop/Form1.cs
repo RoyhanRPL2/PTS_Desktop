@@ -82,15 +82,37 @@ namespace PTS_Desktop
 
         private void btnDaftar_Click(object sender, EventArgs e)
         {
-            con.Open();
+            string username = txtUsername.Text;
+            string password = txtPassword.Text; 
 
-            cmd.CommandText = "INSERT INTO [tb_member] (member_id, member_username, member_email, member_password, member_address, member_phoneNumber) values('" + member_id + "','" + txtUsername.Text + "','" + txtEmail.Text + "','" + txtPassword.Text + "', '"+ txtAlamat.Text +"', '"+ txtTelepon.Text +"')";
-            cmd.ExecuteNonQuery();
+            string query = "SELECT * FROM tb_member WHERE member_username=@Username AND member_password=@Password";
+            SqlCommand command = new SqlCommand(query, con);
+            command.Parameters.AddWithValue("@Username", username);
+            command.Parameters.AddWithValue("@Password", password);
+            con.Open();
+            SqlDataReader dr = command.ExecuteReader();
+            
+
+            if (dr.Read())
+            {
+                MessageBox.Show("credential has ben used");
+            }
+            else
+            {
+               
+                con.Close();
+                con.Open();
+
+                cmd.CommandText = "INSERT INTO [tb_member] (member_id, member_username, member_email, member_password, member_address, member_phoneNumber) values('" + member_id + "','" + txtUsername.Text + "','" + txtEmail.Text + "','" + txtPassword.Text + "', '" + txtAlamat.Text + "', '" + txtTelepon.Text + "')";
+                cmd.ExecuteNonQuery();
+                con.Close();
+                generateid();
+                Form2 form2 = new Form2();
+                form2.Show();
+                this.Hide();
+                con.Close();
+            }
             con.Close();
-            generateid();
-            Form2 form2 = new Form2();
-            form2.Show();
-            this.Hide();
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -99,6 +121,11 @@ namespace PTS_Desktop
         }
 
         private void txtUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDaftar_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -49,7 +49,22 @@ namespace PTS_Desktop
             else
             {
                 MessageBox.Show("Incorrect username or password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DialogResult = MessageBox.Show("maybe you dont have account want to sign up", "signup", MessageBoxButtons.YesNo);
+                if (DialogResult == DialogResult.Yes)
+                {
+                    Form1 form1 = new Form1();
+                    form1.Show();
+                }
+                else
+                {
+
+                }
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
