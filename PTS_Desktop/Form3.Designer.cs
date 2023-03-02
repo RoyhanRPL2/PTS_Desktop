@@ -32,7 +32,7 @@ namespace PTS_Desktop
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCari = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.IconLogout = new System.Windows.Forms.PictureBox();
@@ -76,14 +76,14 @@ namespace PTS_Desktop
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // txtCari
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(70, 265);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(280, 34);
-            this.textBox1.TabIndex = 5;
+            this.txtCari.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCari.Location = new System.Drawing.Point(70, 265);
+            this.txtCari.Multiline = true;
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(280, 34);
+            this.txtCari.TabIndex = 5;
             // 
             // button4
             // 
@@ -94,6 +94,7 @@ namespace PTS_Desktop
             this.button4.TabIndex = 6;
             this.button4.Text = "Cari";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
@@ -139,7 +140,7 @@ namespace PTS_Desktop
             this.Controls.Add(this.IconLogout);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCari);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
@@ -160,7 +161,7 @@ namespace PTS_Desktop
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCari;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox IconLogout;
