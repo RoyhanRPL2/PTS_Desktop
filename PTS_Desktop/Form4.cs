@@ -74,6 +74,8 @@ namespace PTS_Desktop
             cmd.Parameters.Add(new SqlParameter("@images", images));
             cmd.ExecuteNonQuery();
             con.Close();
+            Form3 form3 = new Form3();
+            form3.display_data();
             MessageBox.Show("Data Edit Sukses");
         }
 
@@ -103,6 +105,8 @@ namespace PTS_Desktop
             cmd.ExecuteNonQuery();
             con.Close();
             txtKode.Text = "";
+            Form3 form3 = new Form3();
+            form3.display_data();
             MessageBox.Show("Data Delete Sukses");
         }
 

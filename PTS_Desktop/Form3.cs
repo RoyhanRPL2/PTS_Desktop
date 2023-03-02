@@ -65,5 +65,20 @@ namespace PTS_Desktop
             dataGridView1.DataSource = dt;
             con.Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "select * from [tb_buku] where nama_buku like ('%" + txtCari.Text + "%')";
+            cmd.ExecuteNonQuery();
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            con.Close();
+            txtCari.Text = "";
+        }
     }
 }
