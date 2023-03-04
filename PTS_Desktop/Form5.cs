@@ -1,54 +1,45 @@
-﻿using System;
+﻿using BarcodeLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.IO;
-using BarcodeLib;
+
 
 namespace PTS_Desktop
 {
-    public partial class Form4 : Form
+    public partial class Form5 : Form
     {
-        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-GCSPLIL\SQLEXPRESS;Initial Catalog=db_perpustakaan;Integrated Security=True");
+        SqlConnection con = new SqlConnection(@"Data Source=DESKTOP-GCSPLIL\SQLEXPRESS;Initial Catalog=db_perpustakaan;Integrated Security=True;");
         string imageLocation = "";
-        public Form4()
+
+        public Form5()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void Form5_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void Form4_Load(object sender, EventArgs e)
+        private void btnTambah_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            String sirkulas = "";
+            string sirkulas = "";
             bool isChecked = cbPinjam.Checked;
             if (isChecked)
-            {
                 sirkulas = cbPinjam.Text;
-                cbKembali.Checked = false;
-            }
             else
-            {
                 sirkulas = cbKembali.Text;
-                cbPinjam.Checked = false;
-            }
 
             byte[] images = null;
             FileStream stream = new FileStream(imageLocation, FileMode.Open, FileAccess.Read);
@@ -57,11 +48,20 @@ namespace PTS_Desktop
             con.Open();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "insert into [tb_buku] (kode,nama_pengunjung,genre_buku,nama_buku,status,date,gambar_buku) values ('" + txtKode.Text + "','"+ txtNamaPengunjung.Text +"', '"+ cbxGenre.Text +"','"+ cbxNamaBuku.Text +"', '"+ sirkulas + "', '"+ date.Value.ToString() +"', @images)";
+            cmd.CommandText = "update [tb_buku] set kode = '" + this.txtKode.Text + "', nama_pengunjung='" + this.txtNamaPengunjung.Text + "', genre_buku='" + this.cbxGenre.Text + "', nama_buku='" + this.cbxNamaBuku.Text + "', status='" + sirkulas + "', date='"+ date.Value.ToString() +"' ,gambar_buku=@images where kode='" + this.txtKode.Text + "'";
             cmd.Parameters.Add(new SqlParameter("@images", images));
             cmd.ExecuteNonQuery();
             con.Close();
-            MessageBox.Show("Data Berhasil Disimpan");
+            Form3 form3 = new Form3();
+            form3.display_data();
+            MessageBox.Show("Data Edit Sukses");
+        }
+
+        private void btnKembali_Click(object sender, EventArgs e)
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -75,44 +75,7 @@ namespace PTS_Desktop
             }
         }
 
-        private void btnUbah_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnKembali_Click(object sender, EventArgs e)
-        {
-            Form3 form3 = new Form3();
-            form3.Show();
-            this.Hide();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-           /* txtKode.Text = "";
-            txtNamaBuku.Text = "";
-            txtGenreBuku.Text = "";
-            txtAuthorBuku.Text = "";
-            txtPublisherBuku.Text = "";*/
-            pictureBox1.Image = Image.FromFile(@"C:\Users\ACER\source\repos\PTS_Desktop\PTS_Desktop\Resources\addImage1.png");
-        }
-
-        private void btnHapus_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             Barcode barcode = new Barcode();
             int width = (int)(pictureBox2.Width * 1.0);
@@ -121,27 +84,18 @@ namespace PTS_Desktop
             pictureBox2.Image = image;
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            txtKode.Text = "";
-            txtNamaPengunjung.Text = "";
-            cbxGenre.Text = "";
-            cbxNamaBuku.Text = "";
-            cbPinjam.Checked = false;
-            cbKembali.Checked = false;
-            pictureBox1.Image = Image.FromFile(@"C:\Users\ACER\source\repos\PTS_Desktop\PTS_Desktop\Resources\addImage1.png"); ;
-            pictureBox2.Image = Image.FromFile(@"C:\Users\ACER\source\repos\PTS_Desktop\PTS_Desktop\Resources\addImage1.png"); ;
-        }
-
         private void cbxGenre_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxGenre.Text == "Komik")
             {
                 cbxNamaBuku.Items.Clear();
                 cbxNamaBuku.Items.Add("One Piece");
+                cbxNamaBuku.Items.Add("Dragon Ball");
+                cbxNamaBuku.Items.Add("Naruto");
                 cbxNamaBuku.Text = cbxNamaBuku.Items[0].ToString();
             }
-            else if (cbxGenre.Text == "Edukasi") {
+            else if (cbxGenre.Text == "Edukasi")
+            {
                 cbxNamaBuku.Items.Clear();
                 cbxNamaBuku.Items.Add("Matematika");
                 cbxNamaBuku.Items.Add("Ilmu Pengetahuan Alam");
@@ -156,6 +110,18 @@ namespace PTS_Desktop
                 cbxNamaBuku.Items.Add("Bintang");
                 cbxNamaBuku.Text = cbxNamaBuku.Items[0].ToString();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtKode.Text = "";
+            txtNamaPengunjung.Text = "";
+            cbxGenre.Text = "";
+            cbxNamaBuku.Text = "";
+            cbPinjam.Checked = false;
+            cbKembali.Checked = false;
+            pictureBox1.Image = Image.FromFile(@"C:\Users\ACER\source\repos\PTS_Desktop\PTS_Desktop\Resources\addImage1.png"); ;
+            pictureBox2.Image = Image.FromFile(@"C:\Users\ACER\source\repos\PTS_Desktop\PTS_Desktop\Resources\addImage1.png"); ;
         }
     }
 }
